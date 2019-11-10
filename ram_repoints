@@ -1,0 +1,5 @@
+#gMovementScripts -> EVENT_OBJECTS_COUNT*4 = 120 bytes
+2039830 203c000
+
+#gEventObjects -> EVENT_OBJECTS_COUNT * 0x24(36) = 1080 bytes
+2036E38 203C078
