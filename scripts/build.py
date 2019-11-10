@@ -387,15 +387,15 @@ def main():
         print("There was an error compiling the engine: {}".format(e))
         sys.exit(1)
 
-    # Build special_inserts.asm
-    if os.path.isfile('special_inserts.asm'):
-        if not os.path.isfile('build/special_inserts.bin') \
-                or os.path.getmtime('build/special_inserts.bin') < os.path.getmtime('special_inserts.asm'):
-            print('Assembling special_inserts.asm')
-            cmd = [AS] + ASFLAGS + ['-c', 'special_inserts.asm', '-o', 'build/special_inserts.o']
+    # Build byte_changes.asm
+    if os.path.isfile('byte_changes.asm'):
+        if not os.path.isfile('build/byte_changes.bin') \
+                or os.path.getmtime('build/byte_changes.bin') < os.path.getmtime('byte_changes.asm'):
+            print('Assembling byte_changes.asm')
+            cmd = [AS] + ASFLAGS + ['-c', 'byte_changes.asm', '-o', 'build/byte_changes.o']
             RunCommand(cmd)
 
-            cmd = [OBJCOPY, '-O', 'binary', 'build/special_inserts.o', 'build/special_inserts.bin']
+            cmd = [OBJCOPY, '-O', 'binary', 'build/byte_changes.o', 'build/byte_changes.bin']
             RunCommand(cmd)
 
     print('Built in ' + str(datetime.now() - startTime) + '.')

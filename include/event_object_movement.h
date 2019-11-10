@@ -61,7 +61,7 @@ struct LockedAnimEventObjects
 void __attribute__((long_call)) EventObjectClearHeldMovementIfActive(struct EventObject *);
 bool8 __attribute__((long_call)) EventObjectSetHeldMovement(struct EventObject *eventObject, u8 specialAnimId);
 u8 __attribute__((long_call)) EventObjectClearHeldMovementIfFinished(struct EventObject *);
-u8 __attribute__((long_call)) TrySpawnEventObjectTemplate(struct EventObjectTemplate *eventObjectTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY);
+//u8 __attribute__((long_call)) TrySpawnEventObjectTemplate(struct EventObjectTemplate *eventObjectTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY);
 struct EventObjectTemplate* __attribute__((long_call)) GetEventObjectTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
 void __attribute__((long_call)) MoveEventObjectToMapCoords(struct EventObject *eventObject, s16 x, s16 y);
 void __attribute__((long_call)) EventObjectSetGraphicsId(struct EventObject *eventObject, u16 graphicsId);

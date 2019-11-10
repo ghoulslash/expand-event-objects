@@ -59,7 +59,7 @@ Var800E = 0x203AD30;
 gTextflags = 0x3003E50;
 
 /* Save RAM */
-gSaveBlock1 = 0x3005008;
+//gSaveBlock1 = 0x3005008;
 gSaveBlock2 = 0x300500C;
 gSaveBlock3 = 0x3005010;
 gLastWrittenSector = 0x3005380;

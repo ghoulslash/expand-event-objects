@@ -5,6 +5,11 @@
 #include "gba/gba.h"
 #include <string.h>
 
+#define EVENT_OBJECTS_COUNT_1 16
+#define EVENT_OBJECTS_COUNT_2 14
+#define EVENT_OBJECTS_COUNT 30
+
+
 // Define unused parameters
 #define unusedArg __attribute__((unused))
 
@@ -411,6 +416,23 @@ struct Pokeblock
     u8 feel;
 };
 
+struct Roamer
+{
+    /*0x00*/ u32 ivs;
+    /*0x04*/ u32 personality;
+    /*0x08*/ u16 species;
+    /*0x0A*/ u16 hp;
+    /*0x0C*/ u8 level;
+    /*0x0D*/ u8 status;
+    /*0x0E*/ u8 cool;
+    /*0x0F*/ u8 beauty;
+    /*0x10*/ u8 cute;
+    /*0x11*/ u8 smart;
+    /*0x12*/ u8 tough;
+    /*0x13*/ bool8 active;
+    /*0x14*/ u8 filler[0x8];
+};
+
 struct RoamerOld
 {
     u32 ivs; //0x00
@@ -657,16 +679,107 @@ struct FameCheckerSaveData
 	         u16 unk_0_E:2;
 };
 
-#define EVENT_OBJECTS_COUNT 16
-#define EVENT_OBJECTS_COUNT_2 14
+#define NUM_EASY_CHAT_EXTRA_PHRASES 33
+#define EASY_CHAT_EXTRA_PHRASES_SIZE 8
+
+
+struct MEventBuffer_3120_Sub
+{
+    u16 unk_00;
+    u8 unk_02;
+    u8 unk_03;
+    u8 unk_04[40];
+    u8 unk_2C[10][40];
+};
+
+struct MEventBuffer_3120
+{
+    u32 crc;
+    struct MEventBuffer_3120_Sub data;
+};
+
+struct MEventBuffer_32E0_Sub
+{
+    u16 unk_00;
+    u16 unk_02;
+    u32 unk_04;
+    u8 unk_08_0:2;
+    u8 unk_08_2:4;
+    u8 unk_08_6:2;
+    u8 unk_09;
+    u8 unk_0A[40];
+    u8 unk_32[40];
+    u8 unk_5A[4][40];
+    u8 unk_FA[40];
+    u8 unk_122[40];
+};
+
+struct MEventBuffer_32E0
+{
+    u32 crc;
+    struct MEventBuffer_32E0_Sub data;
+};
+
+struct MEventBuffer_3430_Sub
+{
+    u16 unk_00;
+    u16 unk_02;
+    u16 unk_04;
+    u16 unk_06;
+    u16 unk_08[2][7];
+};
+
+struct MEventBuffer_3430
+{
+    u32 crc;
+    struct MEventBuffer_3430_Sub data;
+};
+
+struct MENewsJisanStruct
+{
+    u8 unk_0_0:2;
+    u8 unk_0_2:3;
+    u8 unk_0_5:3;
+    u8 berry;
+};
+
+struct MEventBuffers
+{
+    /*0x000 0x3120*/ struct MEventBuffer_3120 buffer_000;
+    /*0x1c0 0x32e0*/ struct MEventBuffer_32E0 buffer_1c0;
+    /*0x310 0x3430*/ struct MEventBuffer_3430 buffer_310;
+    /*0x338 0x3458*/ u16 unk_338[4];
+    /*0x340 0x3460*/ struct MENewsJisanStruct unk_340;
+    /*0x344 0x3464*/ u32 unk_344[2][5];
+}; // 0x36C 0x348C
+
+struct TrainerTowerLog
+{
+    u32 unk0;
+    u32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA_0:1;
+    u8 unkA_1:1;
+    u8 unkA_2:1;
+    u8 unkA_3:1;
+    u8 unkA_4:1;
+    u8 unkA_5:1;
+    u8 unkA_6:2;
+};
+
+struct TrainerRematchState
+{
+    u16 stepCounter;
+    u8 rematches[100];
+};
+
 #define EVENT_OBJECT_TEMPLATES_COUNT 64
 #define BERRY_TREES_COUNT  128
 #define FLAGS_COUNT        288 // 300
 #define VARS_COUNT         256
 #define MAIL_COUNT         16
 
-#define NUM_EASY_CHAT_EXTRA_PHRASES 33
-#define EASY_CHAT_EXTRA_PHRASES_SIZE 8
 
 struct SaveBlock1
 {
@@ -697,7 +810,7 @@ struct SaveBlock1
 	/*0x0632*/ u8 field_632[6]; // unused?
     /*0x0638*/ u8 trainerRematchStepCounter;
     /*0x063A*/ u8 ALIGNED(2) trainerRematches[100];
-    /*0x06A0*/ struct EventObject eventObjects1[EVENT_OBJECTS_COUNT];
+    /*0x06A0*/ struct EventObject eventObjects[EVENT_OBJECTS_COUNT_1];
     /*0x08E0*/ struct EventObjectTemplate eventObjectTemplates[EVENT_OBJECT_TEMPLATES_COUNT];
     /*0x0EE0*/ u8 flags[FLAGS_COUNT];
     /*0x1000*/ u16 vars[VARS_COUNT];
@@ -731,7 +844,7 @@ struct SaveBlock1
     /*0x3D38*/ struct TrainerTowerLog unkArray[4];
 };
 
-extern struct SaveBlock1* gSaveBlock1Ptr;
+//extern struct SaveBlock1* gSaveBlock1Ptr;
 
 struct Bitmap           // TODO: Find a better spot for this
 {
