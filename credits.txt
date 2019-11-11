@@ -1,0 +1,2 @@
+1. pret - pokeemerald/pokefirered source code
+2. skeli - project structure/make file

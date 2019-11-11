@@ -14,6 +14,10 @@ vs_seeker:
 	
 sub_810C594
 npc_get_bit7_or_const_x10_when_inactive 08063D72
+
+sPaletteStructs?
+
+sub_8111688
 */
 
 @@@@@@@@@@ SaveEventObjects
@@ -75,6 +79,10 @@ npc_get_bit7_or_const_x10_when_inactive 08063D72
 	cmp r2, #EVENT_OBJECT_COUNT-1
 	
 	
+@@@@@@@@@@ RemoveAllEventObjectsExceptPlayer	
+.org 0x5E57C, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1	
+	
 @@@@@@@@@@ TrySetupEventObjectSprite
 .org 0x5E5C2, 0xff
 	cmp r0, #EVENT_OBJECT_COUNT
@@ -92,8 +100,6 @@ npc_get_bit7_or_const_x10_when_inactive 08063D72
 @@@@@@@@@@ TrySpawnEventObject
 .org 0x5E8DE, 0xFF
 	mov r0, #EVENT_OBJECT_COUNT
-
-
 
 
 @@@@@@@@@@ RemoveEventObjectsOutsideView
@@ -182,7 +188,7 @@ npc_get_bit7_or_const_x10_when_inactive 08063D72
 	cmp r4, #EVENT_OBJECT_COUNT-1
 		
 
-@@@@@@@@@@ sub_0815A1DE
+@@@@@@@@@@ sub_815A008
 .org 0x15A1DE, 0xFF
 	cmp r1, #EVENT_OBJECT_COUNT-1
 	
