@@ -3,8 +3,18 @@
 
 .equ EVENT_OBJECT_COUNT, 30
 
+/*
+LoadLinkPartnerEventObjectSpritePalette
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@ LoadLinkPartnerEventObjectSpritePalette !!!
+FindLockedEventObjectIndex
+
+vs_seeker:
+	sub_810C3B8
+	sub_810C594
+	
+sub_810C594
+npc_get_bit7_or_const_x10_when_inactive 08063D72
+*/
 
 @@@@@@@@@@ SaveEventObjects
 .org 0x4C284, 0xFF
@@ -14,6 +24,10 @@
 .org 0x4C2CC, 0xFF
 	mov r2, #EVENT_OBJECT_COUNT-1
 	
+@@@@@@@@@@ LinkPlayerDetectCollision	
+.org 0x5885A, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+
 @@@@@@@@@@ sub_805BC60
 .org 0x5BC9C, 0xFF
 	cmp r0, #EVENT_OBJECT_COUNT
@@ -28,8 +42,8 @@
 
 @@@@@@@@@@ TryGetEventObjectIdByLocalIdAndMap	
 .org 0x5DF9E, 0xFF
-	cmp r0, #EVENT_OBJECT_COUNT
-	
+	cmp r0, #EVENT_OBJECT_COUNT	
+
 @@@@@@@@@@ GetEventObjectIdByXY
 .org 0x5DFE4, 0xFF
 	cmp r3, #EVENT_OBJECT_COUNT-1
@@ -37,19 +51,21 @@
 @@@@@@@@@@ GetEventObjectIdByLocalIdAndMapInternal
 .org 0x5E036, 0xFF
 	cmp r1, #EVENT_OBJECT_COUNT-1
-.org 0x5E03A, 0xFF
+	.byte 0xE5, 0xD9
 	mov r0, #EVENT_OBJECT_COUNT
 
 @@@@@@@@@@ GetEventObjectIdByLocalId
 .org 0x5E072, 0xFF
 	cmp r2, #EVENT_OBJECT_COUNT-1
-.org 0x5E076, 0xFF
+	.byte 0xEB, 0xD9
 	mov r0, #EVENT_OBJECT_COUNT
 	
 @@@@@@@@@@ InitEventObjectStateFromTemplate
 .org 0x5E106, 0xff
 	mov r0, #EVENT_OBJECT_COUNT
-
+	
+	
+	
 @@@@@@@@@@ GetAvailableEventObjectId
 .org 0x5E454, 0xff
 	cmp r2, #EVENT_OBJECT_COUNT-1
@@ -58,10 +74,11 @@
 .org 0x5E4A2, 0xff
 	cmp r2, #EVENT_OBJECT_COUNT-1
 	
-@@@@@@@@@@ TrySetupEventObjectSprite	
+	
+@@@@@@@@@@ TrySetupEventObjectSprite
 .org 0x5E5C2, 0xff
 	cmp r0, #EVENT_OBJECT_COUNT
-.org 0x5E5C6, 0xff
+	.byte 0x01, 0xD1
 	mov r0, #EVENT_OBJECT_COUNT
 .org 0x5E642, 0xff
 	mov r0, #EVENT_OBJECT_COUNT
@@ -69,13 +86,16 @@
 @@@@@@@@@@ TrySpawnEventObjectTemplate	
 .org 0x5E79A, 0xFF
 	cmp r2, #EVENT_OBJECT_COUNT
-.org 0x5E79E, 0xFF
+	.byte 0x04, 0xD1
 	mov r0, #EVENT_OBJECT_COUNT
 	
 @@@@@@@@@@ TrySpawnEventObject
 .org 0x5E8DE, 0xFF
 	mov r0, #EVENT_OBJECT_COUNT
-	
+
+
+
+
 @@@@@@@@@@ RemoveEventObjectsOutsideView
 .org 0x5ED5A, 0xFF
 	cmp r3, #EVENT_OBJECT_COUNT-1
@@ -95,7 +115,7 @@
 @@@@@@@@@@ GetEventObjectIdByXYZ
 .org 0x5F8EA, 0xFF
 	cmp r4, #EVENT_OBJECT_COUNT-1
-.org 0x5F8EE, 0xFF
+	.byte 0xDE, 0xD9
 	mov r0, #EVENT_OBJECT_COUNT
 	
 @@@@@@@@@@ GetInteractedLinkPlayerScript
@@ -125,7 +145,7 @@
 @@@@@@@@@@ GetMovementScriptIdFromEventObjectId
 .org 0x975F0, 0xFF
 	cmp r2, #EVENT_OBJECT_COUNT-1
-.org 0x975F4, 0xFF
+	.byte 0xF1, 0xD9
 	mov r0, #EVENT_OBJECT_COUNT
 
 @@@@@@@@@@ ScriptMovement_UnfreezeActiveObjects
@@ -139,3 +159,17 @@
 @@@@@@@@@@ sub_80DCD48
 .org 0xDCE06, 0xFF
 	cmp r7, #EVENT_OBJECT_COUNT-1
+	
+
+@@@@@@@@@@ sub_0815A1DE
+.org 0x15A1DE, 0xFF
+	cmp r1, #EVENT_OBJECT_COUNT-1
+	
+	
+@@@@@@@@@@ sub_815A50C
+.org 0x15A50C, 0xFF
+	cmp r0, #EVENT_OBJECT_COUNT-1
+
+	
+	
+	
