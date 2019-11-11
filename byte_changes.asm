@@ -118,6 +118,23 @@ npc_get_bit7_or_const_x10_when_inactive 08063D72
 	.byte 0xDE, 0xD9
 	mov r0, #EVENT_OBJECT_COUNT
 	
+	
+@@@@@@@@@@ is_there_a_npc_to_interact_with	
+.org 0x63972, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+	
+@@@@@@@@@@ FreezeEventObjects
+.org 0x6899E, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+	
+@@@@@@@@@@ FreezeEventObjectsExceptOne
+.org 0x689E2, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+
+@@@@@@@@@@ UnfreezeEventObjects
+.org 0x68A7E, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+	
 @@@@@@@@@@ GetInteractedLinkPlayerScript
 .org 0x6CF88, 0xFF
 	cmp r3, #EVENT_OBJECT_COUNT
@@ -160,6 +177,10 @@ npc_get_bit7_or_const_x10_when_inactive 08063D72
 .org 0xDCE06, 0xFF
 	cmp r7, #EVENT_OBJECT_COUNT-1
 	
+@@@@@@@@@@ sub_810C3B8
+.org 0x10C418, 0xFF
+	cmp r4, #EVENT_OBJECT_COUNT-1
+		
 
 @@@@@@@@@@ sub_0815A1DE
 .org 0x15A1DE, 0xFF

@@ -2,4 +2,9 @@ notes.txt
 *.gba
 *.sav
 *.sgm
-build/
+build/*
+*.gif
+*.png
+*.jpg
+*.bak
+scripts/__pychache__/*
