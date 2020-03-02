@@ -651,6 +651,8 @@ BuyMenuPrint = 0x813F6F4 | 1;
 
 
 /* Map Functions & Overworld Functions */
+GetEventObjectIdByXYZ = 0x805F894 | 1;
+AddPseudoEventObject = 0x805E978 | 1;
 EnableInterrupts = 0x8000B68 | 1;
 DisableInterrupts = 0x8000B94 | 1;
 Overworld_SetEventObjTemplateMovementType = 0x8055114 | 1;
@@ -858,7 +860,7 @@ SpawnSpecialEventObject = 0x805E7F4 | 1;
 CreateVirtualSprite = 0x805E9F8 | 1;
 EventObjectSetGraphicsId = 0x805F060 | 1;
 EventObjectTurn = 0x805F218 | 1;
-GetEventObjectGraphicsInfoOriginal = 0x805F2C8 | 1;
+GetEventObjectGraphicsInfo = 0x805F2C8 | 1;
 MoveEventObjectToMapCoords = 0x805F724 | 1;
 GetEventObjectTemplateByLocalIdAndMap = 0x805FD5C | 1;
 EventObjectSetHeldMovement = 0x8063CA4 | 1;

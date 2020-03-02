@@ -90,12 +90,15 @@ void __attribute__((long_call)) RemoveEventObject(struct EventObject *eventObjec
 u8 __attribute__((long_call)) GetCollisionAtCoords(struct EventObject *, s16, s16, u32);
 u8 __attribute__((long_call)) GetFaceDirectionMovementAction(u32);
 u8 __attribute__((long_call)) SpawnSpecialEventObject(struct EventObjectTemplate *);
-const struct EventObjectGraphicsInfo* __attribute__((long_call)) GetEventObjectGraphicsInfoOriginal(u8 graphicsId);
+const struct EventObjectGraphicsInfo* __attribute__((long_call)) GetEventObjectGraphicsInfo(u8 graphicsId);
 void __attribute__((long_call)) MakeObjectTemplateFromEventObjectGraphicsInfo(u16 graphicsId, void* callback, void* spriteTemplate, void* subspriteTables);
 u8 __attribute__((long_call)) GetMoveDirectionAnimNum(u8 direction);
 u8 __attribute__((long_call)) GetMoveDirectionFastAnimNum(u8 direction);
 void __attribute__((long_call)) PatchObjectPalette(u16, u8);
 u8 __attribute__((long_call)) FindEventObjectPaletteIndexByTag(u16 tag);
+u8 AddPseudoEventObject(u16, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
+u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z);
+
 
 /*
 extern const struct SpriteFrameImage gEventObjectPicTable_PechaBerryTree[];
@@ -122,7 +125,6 @@ void sub_80930E0(s16 *, s16 *, s16, s16);
 void EventObjectClearHeldMovement(struct EventObject *);
 void EventObjectClearHeldMovementIfActive(struct EventObject *);
 void TrySpawnEventObjects(s16, s16);
-u8 AddPseudoEventObject(u16, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
 u8 show_sprite(u8, u8, u8);
 u8 SpawnSpecialEventObjectParameterized(u8 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z);
 void sub_8093038(s16, s16, s16 *, s16 *);
@@ -149,7 +151,6 @@ u8 GetWalkInPlaceNormalMovementAction(u32);
 u8 GetWalkInPlaceSlowMovementAction(u32);
 bool8 EventObjectIsHeldMovementActive(struct EventObject *);
 u8 EventObjectClearHeldMovementIfFinished(struct EventObject *);
-u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z);
 void SetTrainerMovementType(struct EventObject *eventObject, u8 movementType);
 u8 GetTrainerFacingDirectionMovementType(u8 direction);
 const u8 *GetEventObjectScriptPointerByEventObjectId(u8 eventObjectId);

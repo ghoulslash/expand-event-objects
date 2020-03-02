@@ -7,7 +7,7 @@ import sys
 from datetime import datetime
 import _io
 
-OFFSET_TO_PUT = 0x900000
+OFFSET_TO_PUT = 0x9a0000
 SOURCE_ROM = "BPRE0.gba"
 ROM_NAME = "test.gba"
 
@@ -530,6 +530,7 @@ def main():
                     ramToRepointTogether.append(tuple((existing, new_address)))
 			
                 # find all instances of the 'existing' and replace with 'new_address' pointers
+                print('Repointing RAM addresses.')
                 RamRepoint(rom, ramToRepointTogether)
 
         # Read routine repoints from a file

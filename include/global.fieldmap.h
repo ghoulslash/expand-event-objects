@@ -370,9 +370,8 @@ struct Camera
 	s32 y;
 };
 
-#define EVENT_OBJECTS_COUNT 30
-
-extern struct EventObject gEventObjects[EVENT_OBJECTS_COUNT];
+//#define EVENT_OBJECTS_COUNT 30
+//extern struct EventObject gEventObjects[EVENT_OBJECTS_COUNT];
 extern u8 gSelectedEventObject;
 extern struct MapHeader gMapHeader;
 extern struct PlayerAvatar gPlayerAvatar;

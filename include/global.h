@@ -6,9 +6,6 @@
 #include <string.h>
 
 #define EVENT_OBJECTS_COUNT_1 16
-#define EVENT_OBJECTS_COUNT_2 14
-#define EVENT_OBJECTS_COUNT 30
-
 
 // Define unused parameters
 #define unusedArg __attribute__((unused))
@@ -836,7 +833,7 @@ struct SaveBlock1
     /*0x3A48*/ u8 filler_3a48[4];
     /*0x3A4C*/ u8 rivalName[PLAYER_NAME_LENGTH];
     /*0x3A54*/ struct FameCheckerSaveData fameChecker[NUM_FAMECHECKER_PERSONS];
-    /*0x3A94*/ struct EventObject eventObjects2[EVENT_OBJECTS_COUNT_2];		//u8 filler3A94[0x204];		14 * 36 = 504 bytes / 516
+    /*0x3A94*/ u8 filler3a94[506];
 	/*0x3C8C*/ u8 filler[12];
     /*0x3C98*/ struct DaycareMon route5DayCareMon;
     /*0x3D24*/ u8 filler3D24[0x10];
