@@ -179,13 +179,26 @@
 @@@@@@@@@@ ScriptMovement_MoveObjects
 .org 0x977E2, 0xFF
     cmp r5, #EVENT_OBJECT_COUNT-1
-    
+
 @@@@@@@@@@ BuyMenuCollectEventObjectData
-.org 0x9B964, 0xFF
-    cmp r5, #EVENT_OBJECT_COUNT-1
+.org 0x9B956, 0xFF
+    mov r1, #EVENT_OBJECT_COUNT
     
+@.org 0x9B964, 0xFF
+@    cmp r5, #EVENT_OBJECT_COUNT-1
+@    
 .org 0x9B9A0, 0xFF
     cmp r3, #EVENT_OBJECT_COUNT
+    
+@.org 0x9B9EC, 0xFF
+@    .word 0x203C204
+    
+@@@@@@@@@@ BuyMenuDrawEventObjects
+.org 0x9BA5E, 0xFF
+    cmp r0, #EVENT_OBJECT_COUNT
+    
+@.org 0x9BAD4, 0xFF
+@    cmp r6, #EVENT_OBJECT_COUNT-1
     
 @@@@@@@@@@ sub_80DCD48
 .org 0xDCE06, 0xFF

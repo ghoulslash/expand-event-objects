@@ -216,7 +216,7 @@ struct EventObject
 			 u32 fixedPriority:1;
 			 u32 unk3_3:1;
 	/*0x04*/ u8 spriteId;
-	/*0x05*/ u8 graphicsIdLowerByte;
+	/*0x05*/ u8 graphicsId;
 	/*0x06*/ u8 movementType;
 	/*0x07*/ u8 trainerType;
 	/*0x08*/ u8 localId;

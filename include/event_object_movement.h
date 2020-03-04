@@ -96,7 +96,7 @@ u8 __attribute__((long_call)) GetMoveDirectionAnimNum(u8 direction);
 u8 __attribute__((long_call)) GetMoveDirectionFastAnimNum(u8 direction);
 void __attribute__((long_call)) PatchObjectPalette(u16, u8);
 u8 __attribute__((long_call)) FindEventObjectPaletteIndexByTag(u16 tag);
-u8 AddPseudoEventObject(u16, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
+u8 __attribute__((long_call)) AddPseudoEventObject(u8, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
 u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z);
 
 

@@ -1,8 +1,10 @@
 #include "defines.h"
+#include "../include/shop.h"
 #include "../include/field_player_avatar.h"
 #include "../include/event_object_movement.h"
 
-void BuyMenuCollectObjectEventData(void)
+/*
+void BuyMenuCollectEventObjectData(void)
 {
     s16 facingX, facingY;
     u8 x, y, z;
@@ -12,7 +14,7 @@ void BuyMenuCollectObjectEventData(void)
     z = PlayerGetZCoord();
     
     for (y = 0; y < EVENT_OBJECTS_COUNT; y++)
-        sViewportObjectEvents[y].eventObjId = EVENT_OBJECTS_COUNT;
+        gViewportEventObjects[y].eventObjId = EVENT_OBJECTS_COUNT;
     
     for (y = 0; y < 5; y++)
     {
@@ -21,50 +23,60 @@ void BuyMenuCollectObjectEventData(void)
             u8 eventObjId = GetEventObjectIdByXYZ(facingX - 3 + x, facingY - 2 + y, z);
             if (eventObjId != EVENT_OBJECTS_COUNT)
             {
-                sViewportObjectEvents[num].eventObjId = eventObjId;
-                sViewportObjectEvents[num].x = x;
-                sViewportObjectEvents[num].y = y;
+                gViewportEventObjects[num].eventObjId = eventObjId;
+                gViewportEventObjects[num].x = x;
+                gViewportEventObjects[num].y = y;
 
                 switch (gEventObjects[eventObjId].facingDirection)
                 {
                     case DIR_SOUTH:
-                        sViewportObjectEvents[num].animNum = 0;
+                        gViewportEventObjects[num].animNum = 0;
                         break;
                     case DIR_NORTH:
-                        sViewportObjectEvents[num].animNum = 1;
+                        gViewportEventObjects[num].animNum = 1;
                         break;
                     case DIR_WEST:
-                        sViewportObjectEvents[num].animNum = 2;
+                        gViewportEventObjects[num].animNum = 2;
                         break;
                     case DIR_EAST:
                     default:
-                        sViewportObjectEvents[num].animNum = 3;
+                        gViewportEventObjects[num].animNum = 3;
                         break;
                 }
+                
                 num++;
             }
         }
     }
 }
 
-void BuyMenuDrawObjectEvents(void)
+void BuyMenuDrawEventObjects(void)
 {
     u8 i, spriteId;
     const struct EventObjectGraphicsInfo *graphicsInfo;
 
     for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
     {
-        if (sViewportObjectEvents[i].eventObjId == EVENT_OBJECTS_COUNT)
+        if (gViewportEventObjects[i].eventObjId == EVENT_OBJECTS_COUNT)
             continue;
 
-        
-        graphicsInfo = GetEventObjectGraphicsInfo(gEventObjects[sViewportObjectEvents[i].eventObjId].spriteId);        
+        graphicsInfo = GetEventObjectGraphicsInfo(gEventObjects[gViewportEventObjects[i].eventObjId].graphicsId);        
         spriteId = AddPseudoEventObject(
-            gEventObjects[sViewportObjectEvents[i].eventObjId].spriteId,
+            gEventObjects[gViewportEventObjects[i].eventObjId].graphicsId,
             SpriteCallbackDummy,
-            (u16)sViewportObjectEvents[i].x * 16 - 8,
-            (u16)sViewportObjectEvents[i].y * 16 + 48 - graphicsInfo->height / 2,
+            (u16)gViewportEventObjects[i].x * 16 - 8,
+            (u16)gViewportEventObjects[i].y * 16 + 48 - graphicsInfo->height / 2,
             2);
-        StartSpriteAnim(&gSprites[spriteId], sViewportObjectEvents[i].animNum);
+        StartSpriteAnim(&gSprites[spriteId], gViewportEventObjects[i].animNum);
     }
 }
+
+// 0809B764
+void BuyMenuDrawOverworld(void)
+{
+    BuyMenuCollectEventObjectData();
+    BuyMenuDrawEventObjects();
+    BuyMenuDrawMapBg();
+}
+*/
+

@@ -648,7 +648,7 @@ Task_BuyHowManyDialogueInit = 0x809BCA0 | 1;
 BuyMenuConfirmPurchase = 0x809BE90 | 1;
 BuyMenuInitWindows = 0x813F66C | 1;
 BuyMenuPrint = 0x813F6F4 | 1;
-
+BuyMenuDrawMapBg = 0x809B778 | 1;
 
 /* Map Functions & Overworld Functions */
 GetEventObjectIdByXYZ = 0x805F894 | 1;
